@@ -21,7 +21,7 @@ interface TasksListProps {
 export function TasksList({ tasks, toggleTaskDone, removeTask }: TasksListProps) {
   return (
     <FlatList
-      // data={tasks}
+      data={tasks}
       keyExtractor={item => String(item.id)}
       contentContainerStyle={{ paddingBottom: 24 }}
       showsVerticalScrollIndicator={false}
@@ -34,6 +34,7 @@ export function TasksList({ tasks, toggleTaskDone, removeTask }: TasksListProps)
                 activeOpacity={0.7}
                 style={styles.taskButton}
                 //TODO - use onPress (toggle task) prop
+                onPress={() => toggleTaskDone(item.id)}
               >
                 <View 
                   testID={`marker-${index}`}
