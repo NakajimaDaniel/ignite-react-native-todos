@@ -6,6 +6,7 @@ import { Task, TasksList } from '../components/TasksList';
 import { TodoInput } from '../components/TodoInput';
 
 export function Home() {
+
   const [tasks, setTasks] = useState<Task[]>([]);
 
   function handleAddTask(newTaskTitle: string) {
@@ -26,9 +27,15 @@ export function Home() {
     setTasks(newTasks)
 
   }
-
   function handleRemoveTask(id: number) {
     //TODO - remove task from state
+    const newTasks = tasks.filter(item => {
+      if (item.id != id) {
+        return item
+      }
+    })
+    setTasks(newTasks)
+
   }
 
   return (
